@@ -1,8 +1,8 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 import bcrypt from "bcryptjs";
 
-const emailRegexPattern: RegExp =
-  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const emailRegexPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 
 export interface IUser extends Document {
   name: string;
@@ -82,5 +82,5 @@ userSchema.methods.comparePasswords = async function (
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-const userModule = (Model<IUser> = mongoose.model("User", userSchema));
-export default userModule;
+const User: Model<IUser> = mongoose.model<IUser>("User", userSchema);
+export default User;
