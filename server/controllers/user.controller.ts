@@ -56,6 +56,7 @@ export const registrationUser = catchAsyncError(
           activationToken: activationToken.token,
         });
       } catch (error: any) {
+        console.log(error);
         return next(new ErrorHandler(error, 400));
       }
     } catch (error: any) {
